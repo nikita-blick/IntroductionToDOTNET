@@ -1,8 +1,9 @@
 ﻿//#define CALC_IF
-#define CALC_SWITCH
+//#define CALC_SWITCH
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,8 +14,10 @@ namespace Calculator
 		static void Main(string[] args)
 		{
 			Console.Write("Введите арифметическое выражение: ");
+			string expression = "22*33/44/2*8*3";
+
 			//string expression = "22+33-44/2+8*3";
-			string expression = Console.ReadLine();
+			//string expression = Console.ReadLine();
 			expression = expression.Replace(",", ".");
 			expression = expression.Replace(" ", "");
 			Console.WriteLine(expression);
@@ -44,6 +47,32 @@ namespace Calculator
 			}
 			Console.WriteLine();
 
+			while (operations[0] != "")
+			{
+				int i = 0;
+				for (; i < operands.Length; i++)
+				{
+					if (operations[i] == "*" || operations[i] == "/")
+					{
+						if (operations[i] == "*") values[i] *= values[i + 1];
+						if (operations[i] == "/") values[i] /= values[i + 1];
+					}
+				}
+				for (int index = i; index < operations.Length - 1; index++)
+				{ 
+					operations[index] = operations[index+1]; 
+				}
+				for (int index = i; index < values.Length - 1; index++)
+				{
+					values[index] = values[index+1];
+				}
+				operations[operations.Length - 1] = "";
+				values[values.Length - 1] = 0;
+			}
+			Console.WriteLine(values[0]);
+		}
+		
+
 #if CALC_IF
 			if (expression.Contains("+"))
 				Console.WriteLine($"{values[0]} + {values[1]} = {values[0] + values[1]}");
@@ -65,6 +94,11 @@ namespace Calculator
 				case '/': Console.WriteLine($"{values[0]} / {values[1]} = {values[0] / values[1]}"); break;
 			} 
 #endif
+		void Shift(object[] arr, int index)
+		{
+			for(int i = index; i < arr.Length; i++)
+				arr[i] = arr[i + 1];
+			arr[arr.Length - 1] = new object();
 		}
 	}
 }
