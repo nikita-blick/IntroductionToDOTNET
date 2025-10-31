@@ -3,13 +3,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Calculator
 {
-	internal class Program
+	class Program
 	{
 		static string expression = "";
 		static readonly char[] operators = new char[] { '+', '-', '*', '/' };
@@ -21,13 +20,11 @@ namespace Calculator
 		{
 			Console.Write("Введите арифметическое выражение: ");
 			//string expression = "22*33/44/2*8*3";
-
-			string expression = "22+33-44/2+8*3";
-			//string expression = Console.ReadLine();
+			expression = "22+33-44/2+8*3+1";
+			//expression = Console.ReadLine();
 			expression = expression.Replace(",", ".");
 			expression = expression.Replace(" ", "");
 			Console.WriteLine(expression);
-
 
 			operands = expression.Split(operators);
 			values = new double[operands.Length];
@@ -37,7 +34,6 @@ namespace Calculator
 				Console.Write($"{values[i]}\t");
 			}
 			Console.WriteLine();
-
 
 			/*for (int i = 0; i < digits.Length; i++)
 			{
@@ -55,36 +51,29 @@ namespace Calculator
 
 			while (operations[0] != "")
 			{
-				int i = 0;
-				for (; i < operands.Length; i++)
+				//int i = 0;
+				for (int i = 0; i < operations.Length; i++)
 				{
 					if (operations[i] == "*" || operations[i] == "/")
 					{
 						if (operations[i] == "*") values[i] *= values[i + 1];
 						if (operations[i] == "/") values[i] /= values[i + 1];
 						Shift(i);
+						if (operations[i] == "*" || operations[i] == "/") i--;
 					}
-					if (operations[i] == "*" || operations[i] == "/") i--;
 				}
-
-				for (int i=0; i < operands.Length; i++)
+				for (int i = 0; i < operations.Length; i++)
 				{
-					if (operations[i] == "*" || operations[i] == "-")
+					if (operations[i] == "+" || operations[i] == "-")
 					{
-						if (operations[i] == "*") values[i] *= values[i + 1];
+						if (operations[i] == "+") values[i] += values[i + 1];
 						if (operations[i] == "-") values[i] -= values[i + 1];
 						Shift(i);
+						if (operations[i] == "+" || operations[i] == "-") i--;
 					}
-					if (operations[i] == "*" || operations[i] == "-") i--;
 				}
 			}
 			Console.WriteLine(values[0]);
-		}
-	
-
-		
-
-		
 
 #if CALC_IF
 			if (expression.Contains("+"))
@@ -108,12 +97,13 @@ namespace Calculator
 			} 
 #endif
 
-		void Shift(int index)
+		}
+		static void Shift(int index)
 		{
-			for(int i = index; i < operations.Length-1; i++) operations[i] = operations[i + 1];
-			for(int i = index+1; i < operations.Length - 1; i++) values[i] = values[i + 1];
+			for (int i = index; i < operations.Length - 1; i++) operations[i] = operations[i + 1];
+			for (int i = index + 1; i < values.Length - 1; i++) values[i] = values[i + 1];
 			operations[operations.Length - 1] = "";
-			values[values.Length-1] = 0;
+			values[values.Length - 1] = 0;
 		}
 	}
 }
