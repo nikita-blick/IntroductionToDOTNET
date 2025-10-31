@@ -1,6 +1,6 @@
 ﻿#define DATA_TYPES
 //#define CONSTANTS
-#define TYPE_CONVERSIONS
+//#define TYPE_CONVERSIONS
 using System;
 using System;
 using System.Collections.Generic;
@@ -84,16 +84,6 @@ namespace DataTypes
 				($@"ulong занимает {sizeof(ulong)} Байт памяти, и принимает значения в диапазоне от {ulong.MinValue} до {ulong.MaxValue}. 
                 класс-обертка: {typeof(ulong)}");
 			Console.WriteLine(delimiter);
-
-
-
-
-
-
-
-
-
-
 
 			Console.WriteLine($@"decimal заниамет {sizeof(decimal)} Байт памяти");
 			decimal a = 1;
