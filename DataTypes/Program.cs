@@ -1,4 +1,6 @@
-﻿#define TYPE_CONVERSIONS
+﻿#define DATA_TYPES
+//#define CONSTANTS
+#define TYPE_CONVERSIONS
 using System;
 using System;
 using System.Collections.Generic;
@@ -14,6 +16,16 @@ namespace DataTypes
 		static void Main(string[] args)
 		{
 #if DATA_TYPES
+			/////////////////////////////////////////////////////////////
+			//ushort, uint, ulong
+			//sbyte (Signed Byte)
+			//sbyte		byte	1 Байт
+			//short		ushort	2 Байта
+			//int		uint	4 Байта
+			//long		ulong	8 Байт
+
+
+
 			Console.WriteLine($"bool занимает {sizeof(bool)} Байт памяти, класс обвертка Boolean;");
 			Console.WriteLine(bool.FalseString);
 			Console.WriteLine(bool.TrueString);
@@ -33,13 +45,6 @@ namespace DataTypes
 т.е., востпринимается как есть 'as-is'" );
 			Console.WriteLine(delimiter);
 
-			/////////////////////////////////////////////////////////////
-			//ushort, uint, ulong
-			//sbyte (Signed Byte)
-			//sbyte		byte	1 Байт
-			//short		ushort	2 Байта
-			//int		uint	4 Байта
-			//long		ulong	8 Байт
 			Console.WriteLine
 				( $@"byte занимает {sizeof(byte)} Байт памяти, и принимает значения в диапазоне от {byte.MinValue} до {byte.MaxValue},
 				класс-обвертка {typeof(byte)}" );
@@ -47,9 +52,48 @@ namespace DataTypes
 
 			Console.WriteLine
 				( $@"sbyte занимает {sizeof(sbyte)} Байт памяти, и принимает значения в диапазоне от {sbyte.MinValue} до {sbyte.MaxValue},
-				класс-обвертка {typeof(sbyte)}"
-				);
+				класс-обвертка {typeof(sbyte)}" );
 			Console.WriteLine(delimiter);
+
+			Console.WriteLine
+				($@"short занимает {sizeof(short)} Байта памяти, и принимает значения в диапазоне от {short.MinValue} до {short.MaxValue},
+                класс-обертка: {typeof(short)}");
+			Console.WriteLine(delimiter);
+
+			Console.WriteLine
+				($@"int занимает {sizeof(int)} Байта памяти, и принимает значения в диапазоне от {int.MinValue} до {int.MaxValue}. 
+                класс-обертка: {typeof(int)}");
+			Console.WriteLine(delimiter);
+
+			Console.WriteLine
+				($@"long занимает {sizeof(long)} Байт памяти, и принимает значения в диапазоне от {long.MinValue} до {long.MaxValue}. 
+                класс-обертка: {typeof(long)}");
+			Console.WriteLine(delimiter);
+
+			Console.WriteLine
+				($@"ushort занимает {sizeof(ushort)} Байта памяти, и принимает значения в диапазоне от {ushort.MinValue} до {ushort.MaxValue}. 
+                класс-обертка: {typeof(ushort)}");
+			Console.WriteLine(delimiter);
+
+			Console.WriteLine
+				($@"uint занимает {sizeof(uint)} Байта памяти, и принимает значения в диапазоне от {uint.MinValue} до {uint.MaxValue}. 
+                класс-обертка: {typeof(uint)}");
+			Console.WriteLine(delimiter);
+
+			Console.WriteLine
+				($@"ulong занимает {sizeof(ulong)} Байт памяти, и принимает значения в диапазоне от {ulong.MinValue} до {ulong.MaxValue}. 
+                класс-обертка: {typeof(ulong)}");
+			Console.WriteLine(delimiter);
+
+
+
+
+
+
+
+
+
+
 
 			Console.WriteLine($@"decimal заниамет {sizeof(decimal)} Байт памяти");
 			decimal a = 1;
@@ -57,9 +101,10 @@ namespace DataTypes
 			Console.WriteLine(a);
 			a *= 3;
 			Console.WriteLine(a);
+			Console.WriteLine(delimiter);
 #endif
 
-				//////////////////////////////////
+			//////////////////////////////////
 
 #if CONSTANTS
 			Console.WriteLine("Hello".GetType());
@@ -67,7 +112,7 @@ namespace DataTypes
 			Console.WriteLine(5.0.GetType()); 
 #endif
 #if TYPE_CONVERSIONS
-				int n = 5;
+			int n = 5;
 				while (n-- > 0)
 				{
 					Console.WriteLine(n);
