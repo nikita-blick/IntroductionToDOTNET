@@ -22,7 +22,7 @@ namespace Calculator
 			//string expression = "22*33/44/2*8*3";
 			//expression = "(4*(2+3) + (3+2)*4)*3";
 			//expression = "(11 + (55+(22+33)/4-5)*2*3+3)*(3+2)";
-			expression = "5 + (1 + (2 + (22 + 3)*2 + (33 + 44))/(2 + 8)*3 + 1)*2 - 2";
+			expression = "5 + (1 + (2 + (22 + 3)*2 + (33 + 44))/(2 + 8)*3 + 1)*2 - 2"; 
 			//expression = "22+33-44/2+8*3+1";
 			//expression = Console.ReadLine();
 			expression = expression.Replace(",", ".");
